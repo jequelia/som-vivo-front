@@ -33,7 +33,6 @@ function Email() {
             icon: 'success',
             title: 'Um email foi enviado para você, verifique sua caixa de spam!',
             showConfirmButton: true,
-            confirmButtonColor: '#ff6a28'
             
         }).then(() => {
           history.push('/login');
@@ -44,7 +43,7 @@ function Email() {
             icon: 'error',
             title: 'Email não encontrado!',
             showConfirmButton: true,
-            confirmButtonColor: '#ff6a28'
+            
         }).then(() => {})
         });
         
