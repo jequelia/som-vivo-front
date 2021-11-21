@@ -21,6 +21,7 @@ function App() {
         <Switch>
           <RoutePrivate path="/home" component={Home}/>
           <RoutePrivate path="/details/:id+" component={Details}/>
+          <Route path="/"><Login/></Route>
           <Route path="/login"><Login/></Route>
           <Route path="/register"><Register/></Route>
           <Route path="/recuperar-senha/:id+"><RecuperarSenha/></Route>

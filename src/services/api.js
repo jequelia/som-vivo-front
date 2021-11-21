@@ -12,7 +12,6 @@ const api = axios.create({
   },
 });
 
-
 api.interceptors.request.use(async (config) => {
   if (SessionService.isLoggedIn()) {
     let token = SessionService.getToken();
