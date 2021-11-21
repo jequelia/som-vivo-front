@@ -19,7 +19,7 @@ function Home() {
 
     useEffect(() => {
         teste()
-      }, [som]);
+      }, []);
     
    
      const  teste = async () =>{
@@ -61,17 +61,12 @@ function Home() {
 
             <Container>
                 {som.map((repo) => (
-                    <Container>
-                            {console.log(repo.nome)}
                             <Link  to={`/details/${repo._id}`}>
-                            <Card>
-                                <Container>
+                                <Card>
                                     <GraphicEq/>
                                     <h5>{repo.nome}</h5>
-                                </Container>
-                            </Card>
+                                </Card>
                             </Link>
-                        </Container>
                     ))}
             </Container>
         </Flex>

@@ -36,6 +36,9 @@ export const Box = styled.div `
     justify-content: center;
     align-items: center;
     margin-top: 70px;
+    button{
+        background-color:#ff6a28;
+    }
 
 `
 
@@ -45,8 +48,18 @@ export const Card = styled.div `
     border-radius: 15px;
     background-color: #ffff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px;
+    text-decoration: none;
+
+
+    h5, svg{
+        color:#ff6a28;
+    }
+    a{
+        text-decoration: none;
+    }
 
 `

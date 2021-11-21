@@ -2,7 +2,7 @@ import axios from "axios";
 
 import SessionService from './sessionService';
 
-const BACKEND_URL = 'http://87e8-177-37-147-83.ngrok.io/';
+const BACKEND_URL = 'http://4d6e-177-37-147-83.ngrok.io/';
 
 const api = axios.create({
   baseURL: BACKEND_URL,
