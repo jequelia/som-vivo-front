@@ -6,6 +6,8 @@ import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
 import {useSegurancaContext} from '../../context/context';
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
 
 const criaFormEmBranco = () => {
     return {
@@ -29,8 +31,18 @@ function Login() {
         evento.preventDefault();
         let dadosForm = {...form};
         setForm(criaFormEmBranco());
-        await login(dadosForm);
-        history.push('/home');
+        try {
+          await login(dadosForm);
+          history.push('/home');
+
+        } catch (err) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Email ou senha incorreta',
+            showConfirmButton: true,
+            confirmButtonColor: '#ff6a28'
+        }).then(() => {})
+        }
       };
 
     return (
