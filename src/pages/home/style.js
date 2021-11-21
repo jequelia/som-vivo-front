@@ -38,3 +38,15 @@ export const Box = styled.div `
     margin-top: 70px;
 
 `
+
+export const Card = styled.div `
+    width: 10vw;
+    height: 20vh;
+    border-radius: 15px;
+    background-color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+
+`

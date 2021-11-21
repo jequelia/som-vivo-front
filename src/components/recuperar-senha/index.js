@@ -3,24 +3,23 @@ import React, { useState } from 'react';
 import {  Form } from 'semantic-ui-react';
 import { Container, Flex,Backgound } from "./styles";
 import { useHistory } from 'react-router';
+import {  useRouteMatch } from "react-router-dom";
 import { TextField } from '@material-ui/core';
-import {useSegurancaContext} from '../../context/context';
-import { Link } from 'react-router-dom'
+import api from '../../services/api'
 
 const criaFormEmBranco = () => {
     return {
-      email: '',
-      senha: ''
+      senha: '',
+
     };
   };
   
 
-function Login() {
+function RecuperarSenha() {
 
     const [form, setForm] = useState(criaFormEmBranco());
     const history = useHistory();
-    const {login} = useSegurancaContext();
-  
+    const { params } = useRouteMatch();
     const setValor = (evento, campo) => {
       setForm({...form, [campo]: evento.target.value});
     };
@@ -28,9 +27,10 @@ function Login() {
     const submeter = async (evento) => {
         evento.preventDefault();
         let dadosForm = {...form};
+        // console.log(this.props.location.pathName);
         setForm(criaFormEmBranco());
-        await login(dadosForm);
-        history.push('/home');
+        await api.put(`/usuarios/${params.id}`, dadosForm);
+        history.push('/login');
       };
 
     return (
@@ -38,27 +38,21 @@ function Login() {
             <Backgound/>
             <Container>
                 <Form onSubmit={(e) => submeter(e)}>
-                        <h3>Login</h3>
+                        <h3>Insira sua nova senha</h3>
+                        
                         <div>
-                            <TextField label="Email" variant="filled" type="text" name="email" value={form.email} onChange={(e) => setValor(e, 'email')}/>
+                            <TextField label="Digite novamente" variant="filled" type="password" name="senha" value={form.senha} onChange={(e) => setValor(e, 'senha')}/>
                         </div>
                         <br/>
-                        <div>
-                            <TextField label="Senha" variant="filled" type="password" name="senha" value={form.senha} onChange={(e) => setValor(e, 'senha')}/>
-                            <Link id="senha"to="/recuperar-senha">Esqueceu a senha?</Link>
-                        </div>
-                        <br/>
+                       
                         <input type="submit" id="input" value="Entrar"/>
                         <br/>
-                        <div id="register">
-                            <p>Não possui conta?</p>
-                            <Link to="/register">Registre-se!</Link>
-                        </div>
+                       
                 </Form>
             </Container>
         </Flex>
     );
   }
   
-  export default Login;
+  export default RecuperarSenha;
   
