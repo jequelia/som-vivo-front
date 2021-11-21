@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import {  useRouteMatch } from "react-router-dom";
 import { TextField } from '@material-ui/core';
 import api from '../../services/api'
+import Swal from 'sweetalert2'
 
 const criaFormEmBranco = () => {
     return {
@@ -27,10 +28,27 @@ function RecuperarSenha() {
     const submeter = async (evento) => {
         evento.preventDefault();
         let dadosForm = {...form};
-        // console.log(this.props.location.pathName);
         setForm(criaFormEmBranco());
-        await api.put(`/usuarios/${params.id}`, dadosForm);
-        history.push('/login');
+        await api.put(`/usuarios/${params.id}`, dadosForm).then( () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Senha alterada com sucesso!',
+            showConfirmButton: true,
+            confirmButtonColor: '#ff6a28'
+            
+        }).then(() => {
+          history.push('/login');
+        })
+        }).catch((error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Usuario não encontrado!',
+            showConfirmButton: true,
+            confirmButtonColor: '#ff6a28'
+        }).then(() => {})
+        }
+        );
+        
       };
 
     return (

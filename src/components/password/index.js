@@ -5,6 +5,7 @@ import { Container, Flex,Backgound } from "./styles";
 import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
 import api from '../../services/api'
+import Swal from 'sweetalert2'
 
 const criaFormEmBranco = () => {
     return {
@@ -26,8 +27,27 @@ function Email() {
         evento.preventDefault();
         let dadosForm = {...form};
         setForm(criaFormEmBranco());
-        await api.post('/email', dadosForm);
-        history.push('/login');
+        await api.post('/email', dadosForm)
+        .then( () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Um email foi enviado para você, verifique sua caixa de spam!',
+            showConfirmButton: true,
+            confirmButtonColor: '#ff6a28'
+            
+        }).then(() => {
+          history.push('/login');
+        })
+        })
+        .catch((error)=> {
+          Swal.fire({
+            icon: 'error',
+            title: 'Email não encontrado!',
+            showConfirmButton: true,
+            confirmButtonColor: '#ff6a28'
+        }).then(() => {})
+        });
+        
       };
 
     return (

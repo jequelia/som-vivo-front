@@ -12,6 +12,7 @@ import Register from './pages/register';
 import Email from './components/password';
 import RecuperarSenha from './components/recuperar-senha/';
 
+require('dotenv').config()
 
 function App() {
   return (

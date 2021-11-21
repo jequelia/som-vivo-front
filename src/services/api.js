@@ -2,7 +2,7 @@ import axios from "axios";
 
 import SessionService from './sessionService';
 
-const BACKEND_URL = 'http://8322-177-37-147-83.ngrok.io/';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const api = axios.create({
   baseURL: BACKEND_URL,
@@ -11,6 +11,7 @@ const api = axios.create({
     Accept: 'application/json',
   },
 });
+
 
 api.interceptors.request.use(async (config) => {
   if (SessionService.isLoggedIn()) {
