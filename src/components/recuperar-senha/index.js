@@ -59,11 +59,11 @@ function RecuperarSenha() {
                         <h3>Insira sua nova senha</h3>
                         
                         <div>
-                            <TextField label="Digite novamente" variant="filled" type="password" name="senha" value={form.senha} onChange={(e) => setValor(e, 'senha')}/>
+                            <TextField label="Senha" variant="filled" type="password" name="senha" value={form.senha} onChange={(e) => setValor(e, 'senha')}/>
                         </div>
                         <br/>
                        
-                        <input type="submit" id="input" value="Entrar"/>
+                        <input type="submit" id="input" value="Alterar senha"/>
                         <br/>
                        
                 </Form>
